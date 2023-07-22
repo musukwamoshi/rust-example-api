@@ -11,5 +11,7 @@ cargo install sea-orm-cli
 Initializes migrations directory
 sea-orm-cli migrate init
 
+Model is for read operations only. To perform insert, update, or delete, you need to use ActiveModel which attaches meta-data on each attribute.
+
 
 
