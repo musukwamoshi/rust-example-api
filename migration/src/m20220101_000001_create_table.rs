@@ -51,7 +51,7 @@ impl MigrationTrait for Migration {
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-session-user_id")
-                            .from(Session::Table, Article::UserId)
+                            .from(Session::Table, Session::UserId)
                             .to(User::Table, User::Id),
                     )
                     .to_owned(),
@@ -129,7 +129,7 @@ impl MigrationTrait for Migration {
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-reply-comment_id")
-                            .from(Reply::Table, Comment::CommentId)
+                            .from(Reply::Table, Reply::CommentId)
                             .to(Comment::Table, Comment::Id),
                     )
                     .to_owned(),
