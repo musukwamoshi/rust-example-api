@@ -177,7 +177,7 @@ enum Comment {
     CommenterName,
     CommentContent,
     Approved,
-    CommentId,
+    ArticleId,
 }
 
 #[derive(Iden)]
@@ -209,6 +209,6 @@ enum User {
 enum Session {
     Table,
     Id,
-    userId,
-    userEmail,
+    UserId,
+    UserEmail,
 }
