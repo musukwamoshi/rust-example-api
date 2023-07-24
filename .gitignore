@@ -1,4 +1,6 @@
 /target
+migration/target
+entity/target
 
  Keep environment variables out of version control
 .env
