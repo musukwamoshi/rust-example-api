@@ -197,7 +197,6 @@ enum User {
     Email,
     FirstName,
     LastName,
-    Password,
     Hash,
     Salt,
     IsAdmin,
