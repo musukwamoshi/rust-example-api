@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 #[sea_orm(table_name = "comment")]
 pub struct Model {
     #[sea_orm(primary_key)]
+    #[serde(skip_deserializing)]
     pub id: i32,
     pub commenter_name: String,
     pub comment_content: String,

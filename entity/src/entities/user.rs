@@ -7,18 +7,19 @@ use serde::{Deserialize, Serialize};
 #[sea_orm(table_name = "user")]
 pub struct Model {
     #[sea_orm(primary_key)]
+    #[serde(skip_deserializing)]
     pub id: i32,
     pub email: String,
     pub first_name: String,
     pub last_name: String,
-    pub hash: String,
-    pub salt: String,
+    pub hash: Option<String>,
+    pub salt: Option<String>,
     pub is_admin: Option<bool>,
-    pub password_reset_expiration: String,
-    pub password_reset_token: String,
+    pub password_reset_expiration: Option<String>,
+    pub password_reset_token: Option<String>,
 }
 
-#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation, Deserialize, Serialize)]
+#[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
     #[sea_orm(has_many = "super::article::Entity")]
     Article,

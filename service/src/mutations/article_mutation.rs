@@ -1,9 +1,9 @@
 use ::entity::{article, article::Entity as Article};
 use sea_orm::*;
 
-pub struct CommentMutation;
+pub struct ArticleMutation;
 
-impl CommentMutation {
+impl ArticleMutation {
     pub async fn create_article(
         db: &DbConn,
         data: article::Model,

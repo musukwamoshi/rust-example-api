@@ -1,4 +1,4 @@
-pub mod ArticleQuery;
-pub mod CommentQuery;
-pub mod ReplyQuery;
-pub mod UserQuery;
+pub mod article_query;
+pub mod comment_query;
+pub mod reply_query;
+pub mod user_query;

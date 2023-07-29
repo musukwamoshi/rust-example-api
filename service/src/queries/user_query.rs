@@ -8,7 +8,7 @@ impl UserQuery {
         User::find_by_id(id).one(db).await
     }
 
-    /// If ok, returns (reply models, num pages).
+    /// If ok, returns (user models, num pages).
     pub async fn find_users_in_page(
         db: &DbConn,
         page: u64,

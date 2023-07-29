@@ -13,4 +13,4 @@ actix-web = "4"
 dotenvy = "0.15"
 serde = "1"
 tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
-sea-orm = { version = "^0", features = [ "sqlx-postgres", "runtime-actix-rustls", "macros" ] }
+sea-orm = { version = "0.12.1", features = [ "sqlx-postgres", "runtime-actix-rustls", "macros" ] }

@@ -1,7 +1,8 @@
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
-use migration::{Migrator, MigratorTrait};
+use entity::*;
 use sea_orm::Database;
 use sea_orm::DatabaseConnection;
+use service::*;
 use std::env;
 
 #[get("/")]
@@ -12,6 +13,16 @@ async fn hello() -> impl Responder {
 #[post("/echo")]
 async fn echo(req_body: String) -> impl Responder {
     HttpResponse::Ok().body(req_body)
+}
+
+async fn add_user(
+    req_body: web::Json<user::Model>,
+    application_state: web::Data<AppState>,
+) -> HttpResponse {
+    let _ =
+        user_mutation::UserMutation::create_user(&application_state.conn, req_body.into_inner())
+            .await;
+    HttpResponse::Ok().body("success")
 }
 
 async fn manual_hello() -> impl Responder {
@@ -37,14 +48,16 @@ async fn main() -> std::io::Result<()> {
     // let server_url = format!("{host}:{port}");
 
     let conn = Database::connect(&db_url).await.unwrap();
-    Migrator::up(&conn, None).await.unwrap();
+    //Migrator::up(conn, None).await.unwrap();
     let state = AppState { conn };
 
-    HttpServer::new(|| {
+    HttpServer::new(move || {
         App::new()
+            .app_data(web::Data::new(state.clone()))
             .service(hello)
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
+            .route("/user/add", web::post().to(add_user))
     })
     .bind(("127.0.0.1", 8080))?
     .run()

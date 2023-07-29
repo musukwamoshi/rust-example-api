@@ -8,7 +8,7 @@ impl CommentQuery {
         Comment::find_by_id(id).one(db).await
     }
 
-    /// If ok, returns (article models, num pages).
+    /// If ok, returns (comment models, num pages).
     pub async fn find_comments_in_page(
         db: &DbConn,
         page: u64,

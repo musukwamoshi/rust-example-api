@@ -6,7 +6,7 @@ pub struct Migration;
 #[async_trait::async_trait]
 impl MigrationTrait for Migration {
     async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
-        manager
+        let _ = manager
             .create_table(
                 Table::create()
                     .table(User::Table)
@@ -34,7 +34,7 @@ impl MigrationTrait for Migration {
             )
             .await;
 
-        manager
+        let _ = manager
             .create_table(
                 Table::create()
                     .table(Session::Table)
@@ -58,7 +58,7 @@ impl MigrationTrait for Migration {
             )
             .await;
 
-        manager
+        let _ = manager
             .create_table(
                 Table::create()
                     .table(Article::Table)
@@ -84,7 +84,7 @@ impl MigrationTrait for Migration {
             )
             .await;
 
-        manager
+        let _ = manager
             .create_table(
                 Table::create()
                     .table(Comment::Table)
@@ -110,7 +110,7 @@ impl MigrationTrait for Migration {
             )
             .await;
 
-        manager
+        let _ = manager
             .create_table(
                 Table::create()
                     .table(Reply::Table)
@@ -139,19 +139,19 @@ impl MigrationTrait for Migration {
     }
 
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
-        manager
+        let _ = manager
             .drop_table(Table::drop().table(Article::Table).to_owned())
             .await;
-        manager
+        let _ = manager
             .drop_table(Table::drop().table(Comment::Table).to_owned())
             .await;
-        manager
+        let _ = manager
             .drop_table(Table::drop().table(Reply::Table).to_owned())
             .await;
-        manager
+        let _ = manager
             .drop_table(Table::drop().table(User::Table).to_owned())
             .await;
-        manager
+        let _ = manager
             .drop_table(Table::drop().table(Session::Table).to_owned())
             .await;
 
