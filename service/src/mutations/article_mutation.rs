@@ -39,7 +39,7 @@ impl ArticleMutation {
         .await
     }
 
-    pub async fn delete_post(db: &DbConn, id: i32) -> Result<DeleteResult, DbErr> {
+    pub async fn delete_article(db: &DbConn, id: i32) -> Result<DeleteResult, DbErr> {
         let article: article::ActiveModel = Article::find_by_id(id)
             .one(db)
             .await?
@@ -49,7 +49,7 @@ impl ArticleMutation {
         article.delete(db).await
     }
 
-    pub async fn delete_all_posts(db: &DbConn) -> Result<DeleteResult, DbErr> {
+    pub async fn delete_all_articles(db: &DbConn) -> Result<DeleteResult, DbErr> {
         Article::delete_many().exec(db).await
     }
 }

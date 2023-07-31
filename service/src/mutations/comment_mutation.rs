@@ -49,7 +49,7 @@ impl CommentMutation {
         comment.delete(db).await
     }
 
-    pub async fn delete_all_posts(db: &DbConn) -> Result<DeleteResult, DbErr> {
+    pub async fn delete_all_comments(db: &DbConn) -> Result<DeleteResult, DbErr> {
         Comment::delete_many().exec(db).await
     }
 }
