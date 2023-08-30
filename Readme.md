@@ -1,23 +1,23 @@
-Initates a new project
+## Initates a new project
 cargo new name-of-your-app
 
-Adds actix-web as a dependency
+## Adds actix-web as a dependency
 [dependencies]
 actix-web = "4"
 
-Installs sea-orm-cli to run migrations
+## Installs sea-orm-cli to run migrations
 cargo install sea-orm-cli
 
-Initializes migrations directory
+## Initializes migrations directory
 sea-orm-cli migrate init
 
-Creates a new migration
+## Creates a new migration
 sea-orm-cli migrate generate name_of_migration
 
-Runs pending migrations
+## Runs pending migrations
 sea-orm-cli migrate up
 
-Generates new entities
+## Generates new entities
 sea-orm-cli generate entity -u protocol://username:password@localhost/bakery -o entity/src
 
 
